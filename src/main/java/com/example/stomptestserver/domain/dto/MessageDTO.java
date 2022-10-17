@@ -2,7 +2,7 @@ package com.example.stomptestserver.domain.dto;
 
 import lombok.*;
 
-// {"type":"", "sender": "client1", "receiver":"b6268d02-ac43-fc6d-39bb-6e09151eb735", "data":"test..."}
+// {"type":"", "sender": "client1", "channelId":"eddy", "data":"test..."}
 
 @Getter
 @Setter

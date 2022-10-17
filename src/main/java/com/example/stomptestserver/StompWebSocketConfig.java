@@ -12,7 +12,8 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.enableSimpleBroker("/sub");
+        // queue : 1:1 , topic : 1:N
+        registry.enableSimpleBroker("/queue","/topic");
         registry.setApplicationDestinationPrefixes("/pub");
     }
 
@@ -20,9 +21,12 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry
                 .addEndpoint("/ws")
+                .addInterceptors()
                 .setAllowedOrigins("*");
+//                .withSockJS();
     }
 
 
 
 }
+
