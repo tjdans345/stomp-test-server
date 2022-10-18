@@ -14,6 +14,12 @@ public class MessageApiController {
 
     private final SimpMessageSendingOperations simpMessageSendingOperations;
 
+
+    // 여기서 이제 외부 메세지 브로커에 넣어주지 않을까 ? ? ? ? ? ? ? ? ? ? ? ? ? ?
+    /**
+     * 메시지 발행 메서드
+     * @param messageDTO
+     */
     // 클라이언트에서, /pub/hello 로 메시지를 발행 함
     @MessageMapping("/hello")
     public void message(MessageDTO messageDTO) {
