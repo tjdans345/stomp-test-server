@@ -28,6 +28,12 @@ dependencies {
     // stomp-websocket setting
     implementation group: 'org.webjars', name: 'stomp-websocket', version: '2.3.3-1'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    // rabbitMQ
+    implementation 'org.springframework.boot:spring-boot-starter-amqp:2.7.4'
+    // netty
+    implementation 'org.springframework.boot:spring-boot-starter-reactor-netty:2.7.4'
+
 }
 
 tasks.named('test') {
