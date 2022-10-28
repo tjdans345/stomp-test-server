@@ -21,26 +21,19 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer { 
     @Value("${spring.rabbitmq.password}")
     private String password;
 
-//    @Override
-//    public void configureMessageBroker(MessageBrokerRegistry registry) {
-//        // queue : 1:1 , topic : 1:N
-////        registry.setApplicationDestinationPrefixes("/pub")
-////                .enableSimpleBroker("/queue","/topic"); // 이게 메모리 브로커인듯 . .
-////        registry.setPathMatcher(new AntPathMatcher(".")) // url 을 chat/room/3 -> chat.room.3으로 참조하기 위한 설정
-//        registry.setApplicationDestinationPrefixes("/pub")
-//                .enableStompBrokerRelay("/queue", "/topic", "/exchange", "/amq/queue")
-////                .enableStompBrokerRelay("/topic")
-//                .setRelayHost("localhost")
-//                .setVirtualHost("/")
-//                .setRelayPort(5672)
-//                .setClientLogin("username")
-//                .setClientPasscode("password");
-//    }
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry
+                .addEndpoint("/stomp/chat") // handshake 와 통신을 담당할 endpoint 를 지정
+                .setAllowedOrigins("*");
+//                .withSockJS();
+    }
 
     // stomp 프로토콜 설정
+    // 소켓 연결 담당
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        // send 요청 처리  ㅍ
+        // send 요청 처리
         registry.setApplicationDestinationPrefixes("/pub");
         // enableStompBrokerRelay : SimpleBroker의 기능과 외부 message broker(RabbitMQ, ActiveMQ 등)에 메시지를 전달하는 기능을 가지고 있음.
         // 외부 메세지 브로커인 RabbitMQ 연결 설정
@@ -55,13 +48,7 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer { 
                 .setClientPasscode(password);
     }
 
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry
-                .addEndpoint("/stomp/chat") // handshake 와 통신을 담당할 endpoint 를 지정
-                .setAllowedOrigins("*");
-//                .withSockJS();
-    }
+
 
 
 
