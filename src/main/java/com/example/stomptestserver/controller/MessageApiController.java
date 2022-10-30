@@ -40,7 +40,7 @@ public class MessageApiController {
      */
     // 여기서 이제 외부 메세지 브로커에 넣어주지 않을까 ? ? ? ? ? ? ? ? ? ? ? ? ? ?
     // 클라이언트에서, /pub/hello 로 메시지를 발행 함
-    // 메시지 브로커
+    // 메시지 브로커 (현재 외부 브로커 연결)
     // Client 가 SEND 를 할 수 있는 경로
     @MessageMapping("/hello")
     public void message(@Payload MessageDTO messageDTO, SimpMessageHeaderAccessor headerAccessor) {
@@ -62,7 +62,7 @@ public class MessageApiController {
 
 
 
-    
+
 
 
 }
