@@ -25,7 +25,7 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer { 
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry
                 .addEndpoint("/stomp/chat") // handshake 와 통신을 담당할 endpoint 를 지정
-                .setAllowedOrigins("*");
+                .setAllowedOriginPatterns("*");
 //                .withSockJS();
     }
 

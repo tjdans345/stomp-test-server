@@ -32,6 +32,7 @@ dependencies {
 
     // rabbitMQ
     implementation 'org.springframework.boot:spring-boot-starter-amqp:2.7.4'
+
     // netty
     implementation 'org.springframework.boot:spring-boot-starter-reactor-netty:2.7.4'
 
