@@ -52,7 +52,6 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer { 
     // 아래 코드 참조 블로그 : https://velog.io/@yyong3519/WebSocket-RabbitMQ
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-
         registry.setPathMatcher(new AntPathMatcher(".")); // url 을 chat/room/3 -> chat.room.3 으로 참조하기 위한 설정
         // send 요청 처리
         registry.setApplicationDestinationPrefixes("/pub");
